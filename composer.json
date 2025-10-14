@@ -24,7 +24,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "sylius/mollie-plugin": "^3.0",
         "sylius/paypal-plugin": "^2.0",
         "sylius/sylius": "^2.1",
@@ -113,7 +113,6 @@
             "@auto-scripts"
         ],
         "post-create-project-cmd": [
-            "@php -r \"file_put_contents('.gitignore', str_replace('/composer.lock' . PHP_EOL, '', file_get_contents('.gitignore')));\"",
             "@php bin/console sylius:inform-about-gus --ansi",
             "@php bin/console sylius:show-plus-info --ansi"
         ],
