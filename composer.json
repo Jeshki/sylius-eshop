@@ -27,7 +27,7 @@
         "php": "^8.3",
         "sylius/mollie-plugin": "^3.2",
         "sylius/paypal-plugin": "^2.0",
-        "sylius/sylius": "^2.1",
+        "sylius/sylius": "^2.2",
         "symfony/dotenv": "^7.4",
         "symfony/flex": "^2.10",
         "symfony/runtime": "^7.4"
@@ -82,7 +82,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-2.1": "2.1.x-dev"
+            "dev-2.2": "2.2.x-dev"
         },
         "symfony": {
             "allow-contrib": true,
