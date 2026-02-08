@@ -22,6 +22,49 @@ Powerful REST API allows for easy integrations and creating unique customer expe
 
 We're using full-stack Behavior-Driven-Development, with [Behat](http://behat.org)
 
+## Quick local start (recommended)
+
+### Docker (recommended for personal computer)
+
+Requirements: Docker + Docker Compose plugin.
+
+```bash
+cp compose.override.dist.yml compose.override.yml
+cp .env .env.local
+make init
+```
+
+Open after startup:
+- Shop: http://localhost
+- Admin: http://localhost/admin
+- MailHog: http://localhost:8025
+
+Useful commands:
+```bash
+make up
+make down
+make clean
+```
+
+If port `80` is occupied on your machine, edit `compose.override.yml` and change Nginx mapping, for example to `8080:80`.
+
+### Traditional (without Docker)
+
+Requirements: PHP 8.2+, Composer, Node.js 18+, Yarn, MySQL/MariaDB, Symfony CLI.
+
+```bash
+cp .env .env.local
+composer install
+yarn install
+yarn build
+php bin/console sylius:install -s default -n
+symfony server:start -d
+```
+
+Then open http://127.0.0.1:8000.
+
+For Lithuanian step-by-step instructions, see [docs/LOCAL_SETUP_LT.md](docs/LOCAL_SETUP_LT.md).
+
 ## Documentation
 
 Documentation is available at [docs.sylius.com](http://docs.sylius.com).
