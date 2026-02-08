@@ -19,6 +19,7 @@ Naudingos komandos:
 make up
 make down
 make clean
+make doctor
 ```
 
 > Jei `80` portas užimtas, pakeiskite `compose.override.yml` Nginx port mapinimą (pvz. į `8080:80`) ir atidarykite `http://localhost:8080`.
@@ -38,7 +39,15 @@ symfony server:start -d
 
 Tada atidarykite: http://127.0.0.1:8000
 
-## 3) Dažniausios problemos
+## 3) Greitas patikrinimas
+
+```bash
+make doctor
+```
+
+Ši komanda parodo, ar turite pagrindinius įrankius (`php`, `composer`, `yarn`, `docker`, `symfony`) ir ar sugeneruoti reikalingi failai (`vendor/`, `public/build/manifest.json`).
+
+## 4) Dažniausios problemos
 
 - Jei nepasileidžia `bin/console`, dažniausiai trūksta `vendor/` priklausomybių (`composer install`).
 - Jei neįvyksta migracijos/instaliacija, patikrinkite DB prisijungimą `.env.local` faile.

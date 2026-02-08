@@ -1,4 +1,4 @@
-.PHONY: run
+.PHONY: run doctor
 
 DOCKER_COMPOSE ?= docker compose
 # Avoid using root (0:0) as DOCKER_USER, especially in WSL2 environments
@@ -23,6 +23,9 @@ init:
 
 run:
 	@make -s up
+
+doctor:
+	@bin/local-doctor
 
 debug:
 	@ENV=$(ENV) DOCKER_USER=$(DOCKER_USER) $(DOCKER_COMPOSE) -f compose.yml -f compose.override.yml -f compose.debug.yml up -d

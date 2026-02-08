@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+check_cmd() {
+  local cmd="$1"
+  if command -v "$cmd" >/dev/null 2>&1; then
+    echo "[OK] $cmd"
+  else
+    echo "[MISSING] $cmd"
+  fi
+}
+
+echo "Local environment checks:"
+check_cmd php
+check_cmd composer
+check_cmd yarn
+check_cmd docker
+check_cmd symfony
+
+echo
+if [ -f compose.override.yml ]; then
+  echo "[OK] compose.override.yml exists"
+else
+  echo "[MISSING] compose.override.yml (copy from compose.override.dist.yml)"
+fi
+
+if [ -d vendor ]; then
+  echo "[OK] vendor directory exists"
+else
+  echo "[MISSING] vendor directory (run composer install or make init)"
+fi
+
+if [ -f public/build/manifest.json ]; then
+  echo "[OK] front assets are built"
+else
+  echo "[MISSING] front assets (run yarn build or make init)"
+fi

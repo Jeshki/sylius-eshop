@@ -5,24 +5,23 @@
         <div class="ui container">
             <div class="ui stackable two column grid middle aligned">
                 <div class="column">
-                    <div class="ui teal label">Basic store</div>
-                    <h1 class="ui header">Paprasta internetinė parduotuvė su Sylius</h1>
+                    <div class="ui teal label">{{ 'app.homepage.badge'|trans }}</div>
+                    <h1 class="ui header">{{ 'app.homepage.title'|trans }}</h1>
                     <p>
-                        Paruoštas šablonas su aiškia pradžia: produktų katalogu, kategorijų kortelėmis
-                        ir nuoroda į administravimo skydą.
+                        {{ 'app.homepage.description'|trans }}
                     </p>
                     <a href="{{ path('sylius_shop_product_index') }}" class="ui large primary button">
-                        Peržiūrėti produktus
+                        {{ 'app.homepage.actions.products'|trans }}
                     </a>
-                    <a href="/admin" class="ui large basic button">Administravimas</a>
+                    <a href="{{ path('sylius_admin_dashboard') }}" class="ui large basic button">{{ 'app.homepage.actions.admin'|trans }}</a>
                 </div>
                 <div class="column">
                     <div class="ui raised segment">
-                        <h3 class="ui header">Greitas startas</h3>
+                        <h3 class="ui header">{{ 'app.homepage.quick_start.title'|trans }}</h3>
                         <ol class="ui list">
                             <li><code>cp compose.override.dist.yml compose.override.yml</code></li>
                             <li><code>make init</code></li>
-                            <li>Atidarykite <code>http://localhost</code></li>
+                            <li>{{ 'app.homepage.quick_start.open'|trans }} <code>http://localhost</code></li>
                         </ol>
                     </div>
                 </div>
@@ -32,24 +31,24 @@
 
     <section class="ui vertical segment">
         <div class="ui container">
-            <h2 class="ui header">Populiarios kategorijos</h2>
+            <h2 class="ui header">{{ 'app.homepage.categories.title'|trans }}</h2>
             <div class="ui three stackable cards">
                 <a class="card" href="{{ path('sylius_shop_product_index') }}">
                     <div class="content">
-                        <div class="header">Drabužiai</div>
-                        <div class="description">Kasdieniai ir proginiai modeliai.</div>
+                        <div class="header">{{ 'app.homepage.categories.clothes.title'|trans }}</div>
+                        <div class="description">{{ 'app.homepage.categories.clothes.description'|trans }}</div>
                     </div>
                 </a>
                 <a class="card" href="{{ path('sylius_shop_product_index') }}">
                     <div class="content">
-                        <div class="header">Aksesuarai</div>
-                        <div class="description">Papildomi stiliaus akcentai.</div>
+                        <div class="header">{{ 'app.homepage.categories.accessories.title'|trans }}</div>
+                        <div class="description">{{ 'app.homepage.categories.accessories.description'|trans }}</div>
                     </div>
                 </a>
                 <a class="card" href="{{ path('sylius_shop_product_index') }}">
                     <div class="content">
-                        <div class="header">Dovanos</div>
-                        <div class="description">Idėjos įvairioms progoms.</div>
+                        <div class="header">{{ 'app.homepage.categories.gifts.title'|trans }}</div>
+                        <div class="description">{{ 'app.homepage.categories.gifts.description'|trans }}</div>
                     </div>
                 </a>
             </div>

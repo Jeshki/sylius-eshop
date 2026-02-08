@@ -44,6 +44,7 @@ Useful commands:
 make up
 make down
 make clean
+make doctor
 ```
 
 If port `80` is occupied on your machine, edit `compose.override.yml` and change Nginx mapping, for example to `8080:80`.
@@ -64,6 +65,8 @@ symfony server:start -d
 Then open http://127.0.0.1:8000.
 
 For Lithuanian step-by-step instructions, see [docs/LOCAL_SETUP_LT.md](docs/LOCAL_SETUP_LT.md).
+
+Tip: run `make doctor` to quickly check local prerequisites and generated files.
 
 ## Documentation
 

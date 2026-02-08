@@ -1,0 +1,22 @@
+app:
+    homepage:
+        badge: Basic parduotuvė
+        title: Paprasta internetinė parduotuvė su Sylius
+        description: Paruoštas pradinis šablonas su aiškia pradžia, produktų katalogu ir greitomis nuorodomis į administravimą.
+        actions:
+            products: Peržiūrėti produktus
+            admin: Administravimas
+        quick_start:
+            title: Greitas startas
+            open: Atidarykite
+        categories:
+            title: Populiarios kategorijos
+            clothes:
+                title: Drabužiai
+                description: Kasdieniai ir proginiai modeliai.
+            accessories:
+                title: Aksesuarai
+                description: Papildomi stiliaus akcentai.
+            gifts:
+                title: Dovanos
+                description: Idėjos įvairioms progoms.

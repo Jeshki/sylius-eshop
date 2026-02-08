@@ -1,0 +1,22 @@
+app:
+    homepage:
+        badge: Basic store
+        title: Simple online store with Sylius
+        description: Ready starter template with a clear beginning, product catalog access and quick links to administration.
+        actions:
+            products: Browse products
+            admin: Administration
+        quick_start:
+            title: Quick start
+            open: Open
+        categories:
+            title: Popular categories
+            clothes:
+                title: Clothes
+                description: Everyday and occasion-ready models.
+            accessories:
+                title: Accessories
+                description: Finishing touches for every style.
+            gifts:
+                title: Gifts
+                description: Ideas for different occasions.
