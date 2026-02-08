@@ -1,0 +1,95 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    <section class="basic-store-hero">
+        <div class="ui container">
+            <div class="basic-store-hero__content">
+                <span class="ui teal label">Nauja kolekcija</span>
+                <h1>Paprasta internetinė parduotuvė su Sylius</h1>
+                <p>
+                    Paruoštas pradinis šablonas: aiški pradžia, kategorijų nuorodos ir populiariausių produktų blokas.
+                    Galite toliau lengvai pritaikyti pagal savo prekės ženklą.
+                </p>
+                <a href="{{ path('sylius_shop_product_index') }}" class="ui large primary button">
+                    Peržiūrėti produktus
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ui vertical segment basic-store-section">
+        <div class="ui container">
+            <h2 class="ui header">Pradėkite nuo šių kategorijų</h2>
+            <div class="ui stackable three cards">
+                <a class="card" href="{{ path('sylius_shop_product_index') }}">
+                    <div class="content">
+                        <div class="header">Drabužiai</div>
+                        <div class="description">Kasdieniai ir proginiai modeliai.</div>
+                    </div>
+                </a>
+                <a class="card" href="{{ path('sylius_shop_product_index') }}">
+                    <div class="content">
+                        <div class="header">Aksesuarai</div>
+                        <div class="description">Papildykite įvaizdį detalėmis.</div>
+                    </div>
+                </a>
+                <a class="card" href="{{ path('sylius_shop_product_index') }}">
+                    <div class="content">
+                        <div class="header">Dovanos</div>
+                        <div class="description">Greitos idėjos įvairioms progoms.</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ui vertical segment basic-store-section basic-store-highlight">
+        <div class="ui container">
+            <div class="ui two column stackable grid middle aligned">
+                <div class="column">
+                    <h2 class="ui header">Greitas paleidimas lokaliai</h2>
+                    <p>
+                        Projektas paruoštas taip, kad galėtumėte paleisti per Docker su <code>make init</code>.
+                        Jei nenaudojate Docker, README faile rasite ir tradicinį Symfony paleidimo kelią.
+                    </p>
+                </div>
+                <div class="right aligned column">
+                    <a href="/admin" class="ui basic button">Atidaryti administravimą</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .basic-store-hero {
+            background: linear-gradient(120deg, #f2fbfa, #ffffff);
+            padding: 4.5rem 0;
+            border-bottom: 1px solid #ebf0f5;
+        }
+
+        .basic-store-hero__content {
+            max-width: 740px;
+        }
+
+        .basic-store-hero h1 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            line-height: 1.2;
+        }
+
+        .basic-store-hero p {
+            font-size: 1.1rem;
+            color: rgba(0, 0, 0, 0.68);
+            margin-bottom: 1.5rem;
+        }
+
+        .basic-store-section {
+            padding: 3rem 0;
+        }
+
+        .basic-store-highlight {
+            background: #f9fafb;
+        }
+    </style>
+{% endblock %}

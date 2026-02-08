@@ -22,6 +22,48 @@ Powerful REST API allows for easy integrations and creating unique customer expe
 
 We're using full-stack Behavior-Driven-Development, with [Behat](http://behat.org)
 
+## Quick local start (recommended)
+
+### Docker (works on macOS / Linux / Windows with Docker Desktop)
+
+1. Copy optional environment file if needed:
+   ```bash
+   cp .env .env.local
+   ```
+2. Initialize everything (dependencies, DB, assets, Sylius install):
+   ```bash
+   make init
+   ```
+3. Open:
+   - Shop: http://localhost:8000
+   - Admin: http://localhost:8000/admin
+
+Useful commands:
+```bash
+make up
+make down
+make clean
+```
+
+If ports are already in use, edit `compose.override.yml` and change host ports before running `make up`.
+
+### Traditional (without Docker)
+
+Requirements: PHP 8.2+, Composer, Node.js 18+, Yarn, MySQL/MariaDB, Symfony CLI.
+
+```bash
+cp .env .env.local
+composer install
+yarn install
+yarn build
+php bin/console doctrine:database:create --if-not-exists
+php bin/console doctrine:migrations:migrate -n
+php bin/console sylius:fixtures:load -n
+symfony serve -d
+```
+
+Then open http://127.0.0.1:8000.
+
 ## Documentation
 
 Documentation is available at [docs.sylius.com](http://docs.sylius.com).
