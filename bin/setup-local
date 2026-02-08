@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MODE="auto"
+DRY_RUN=0
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --mode)
+      MODE="${2:-}"
+      shift 2
+      ;;
+    --dry-run)
+      DRY_RUN=1
+      shift
+      ;;
+    *)
+      echo "Unknown argument: $1"
+      echo "Usage: bin/setup-local [--mode auto|docker|native] [--dry-run]"
+      exit 1
+      ;;
+  esac
+done
+
+run_cmd() {
+  local cmd="$1"
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    echo "[DRY RUN] $cmd"
+  else
+    echo "[RUN] $cmd"
+    eval "$cmd"
+  fi
+}
+
+ensure_file_copy() {
+  local src="$1"
+  local dst="$2"
+  if [[ -f "$dst" ]]; then
+    echo "[OK] $dst already exists"
+  else
+    run_cmd "cp $src $dst"
+  fi
+}
+
+has_cmd() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+if [[ "$MODE" == "auto" ]]; then
+  if has_cmd docker; then
+    MODE="docker"
+  else
+    MODE="native"
+  fi
+fi
+
+echo "Setup mode: $MODE"
+
+if [[ "$MODE" == "docker" ]]; then
+  if ! has_cmd docker; then
+    echo "Docker mode selected but docker command is missing."
+    exit 1
+  fi
+
+  ensure_file_copy compose.override.dist.yml compose.override.yml
+  ensure_file_copy .env .env.local
+
+  run_cmd "make init"
+  echo "\nDone. Open: http://localhost and http://localhost/admin"
+  exit 0
+fi
+
+if [[ "$MODE" == "native" ]]; then
+  for cmd in php composer yarn; do
+    if ! has_cmd "$cmd"; then
+      echo "Missing required command for native mode: $cmd"
+      exit 1
+    fi
+  done
+
+  ensure_file_copy .env .env.local
+
+  run_cmd "composer install"
+  run_cmd "yarn install"
+  run_cmd "yarn build"
+  run_cmd "php bin/console sylius:install -s default -n"
+
+  if has_cmd symfony; then
+    run_cmd "symfony server:start -d"
+    echo "\nDone. Open: http://127.0.0.1:8000"
+  else
+    echo "\nSetup complete. Start app manually (example): php -S 127.0.0.1:8000 -t public"
+  fi
+
+  exit 0
+fi
+
+echo "Invalid mode: $MODE"
+exit 1

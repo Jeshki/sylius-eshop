@@ -1,5 +1,20 @@
 # Lokalūs paleidimo žingsniai (LT)
 
+## 0) Viena komanda (rekomenduojama)
+
+```bash
+make setup-local
+```
+
+Komanda automatiškai pasirenka Docker (jei yra) arba native režimą.
+
+Galite paleisti konkrečiu režimu:
+
+```bash
+bin/setup-local --mode docker
+bin/setup-local --mode native
+```
+
 ## 1) Paleidimas per Docker (rekomenduojama)
 
 ```bash
@@ -20,6 +35,7 @@ make up
 make down
 make clean
 make doctor
+make setup-local
 ```
 
 > Jei `80` portas užimtas, pakeiskite `compose.override.yml` Nginx port mapinimą (pvz. į `8080:80`) ir atidarykite `http://localhost:8080`.
@@ -43,9 +59,12 @@ Tada atidarykite: http://127.0.0.1:8000
 
 ```bash
 make doctor
+make setup-local
 ```
 
 Ši komanda parodo, ar turite pagrindinius įrankius (`php`, `composer`, `yarn`, `docker`, `symfony`) ir ar sugeneruoti reikalingi failai (`vendor/`, `public/build/manifest.json`).
+
+Jei norite tik pamatyti ką darys setup komanda (be vykdymo), naudokite `bin/setup-local --dry-run`.
 
 ## 4) Dažniausios problemos
 

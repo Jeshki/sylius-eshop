@@ -24,6 +24,20 @@ We're using full-stack Behavior-Driven-Development, with [Behat](http://behat.or
 
 ## Quick local start (recommended)
 
+### One-command setup (recommended)
+
+```bash
+make setup-local
+```
+
+By default it auto-detects Docker and uses it when available.
+
+Manual mode selection:
+```bash
+bin/setup-local --mode docker
+bin/setup-local --mode native
+```
+
 ### Docker (recommended for personal computer)
 
 Requirements: Docker + Docker Compose plugin.
@@ -45,6 +59,7 @@ make up
 make down
 make clean
 make doctor
+make setup-local
 ```
 
 If port `80` is occupied on your machine, edit `compose.override.yml` and change Nginx mapping, for example to `8080:80`.
@@ -67,6 +82,8 @@ Then open http://127.0.0.1:8000.
 For Lithuanian step-by-step instructions, see [docs/LOCAL_SETUP_LT.md](docs/LOCAL_SETUP_LT.md).
 
 Tip: run `make doctor` to quickly check local prerequisites and generated files.
+
+You can also preview setup steps without executing them: `bin/setup-local --dry-run`.
 
 ## Documentation
 
